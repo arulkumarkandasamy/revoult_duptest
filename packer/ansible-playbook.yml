@@ -6,9 +6,9 @@
       shell: add-apt-repository ppa:openjdk-r/ppa
 
     - name: apt update
-      shell: apt-get update
+      shell: apt-get update -y
 
     - name: install open jdk
-      shell: apt-get install openjdk-8-jdk
+      shell: apt-get install -y openjdk-8-jdk
 
 
