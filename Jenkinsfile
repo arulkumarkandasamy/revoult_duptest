@@ -15,8 +15,8 @@ pipeline {
         dir("${JENKINS_HOME}/workspace/revoultduptest/") {
           sh 'mvn package'
         }
-        withAWS(credentials: 'dash-build-s3upload', region: 'us-west-1') {
-            s3Upload(bucket: 'arulrevoulttest', includePathPattern: "*tar*", workingDir: 'build')
+        withAWS(credentials: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', region: 'ap-south-1') {
+            s3Upload bucket:'arulrevoulttest', path:"build-${env.BUILD_NUMBER}/", includePathPattern: "*tar*", workingDir:"${env.WORKSPACE}"
         }
       }
     }
