@@ -1,7 +1,7 @@
 pipeline {
   agent {
        docker {
-          image 'goforgold/build-container:latest'
+          image 'arulkumar1967/build-arul-container:latest'
           args '-u root:sudo -v $HOME/workspace/revoultduptest:/revoultduptest'
         }
     }
