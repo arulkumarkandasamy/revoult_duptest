@@ -10,8 +10,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'cd complete'
-        sh 'mvn package'
+        dir("${JENKINS_HOME}/workspace/revoultduptest/complete") {
+          sh 'mvn package'
+        }
       }
     }
     stage('Create Packer AMI') {
