@@ -19,7 +19,7 @@
     },
     {
       "type": "file",
-      "source": "bin/gs-spring-boot-0.1.0.jar",
+      "source": "packer/bin/gs-spring-boot-0.1.0.jar",
       "destination": "/home/ubuntu/spring-boot-app"
     },
     {
