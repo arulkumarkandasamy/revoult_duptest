@@ -3,32 +3,37 @@
 
   tasks:
 
-#    - name: Create JAVA_HOME folder
-#      file: state=directory path={{global_vars.home_path}}/java owner=dev group=dev recurse=yes mode=0755
-#
-#    - name: Download Java from url
-#      command: "wget -q -O {{global_vars.home_path}}/java/jdk-linux-x64.tar.gz --no-check-certificate --no-cookies --header 'Cookie: oraclelicense=accept-securebackup-cookie' {{global_vars.java_download_url}} creates={{global_vars.home_path}}/java/jdk-linux-x64.tar.gz"
-#      register: java_out
+#   #- name: add webupd8team
+#  shell: echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu {{ ansible_distribution_release }} main" | tee -a /etc/apt/sources.list
+#  sudo: yes
 
-    - name: Install add-apt-repostory
-      become: yes
-      apt: name=software-properties-common state=latest
+#- name: add key server
+#  shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
+#  sudo: yes
 
-    - name: Add Oracle Java Repository
-      become: yes
-      apt_repository: repo='ppa:webupd8team/java'
+- name: add add-apt-repostory
+  apt: pkg=software-properties-common state=present update_cache=yes
+  sudo: yes
 
-    - name: Accept Java 8 License
-      become: yes
-      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+- name: add add-apt-repostory
+  apt: pkg=python-software-properties state=present update_cache=yes
+  sudo: yes
+  when: ansible_distribution_release == "precise"
 
-    - name: Install Oracle Java 8
-      become: yes
-      apt: name={{item}} state=latest
-      with_items:
-        - oracle-java8-installer
-        - ca-certificates
-        - oracle-java8-set-default
+- name: add webupd8 ppa
+  apt_repository: repo='ppa:webupd8team/java'
+
+- name: update
+  shell: apt-get update
+  sudo: yes
+
+- name: auto accept oracle jdk license
+  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+  sudo: yes
+
+- name: install java8
+  shell: apt-get install -y oracle-java8-installer ca-certificates
+  sudo: yes
 
 #    - name: start spring boot jar
 #      command: nohup java -jar gs-spring-boot-0.1.0.jar &
