@@ -1,7 +1,7 @@
 ---
   - hosts: all
     sudo: yes
-
+    tasks:
     - name: install ppa
       shell: add-apt-repository ppa:linuxuprising/java
 
@@ -10,9 +10,5 @@
 
     - name: set default
       shell: apt-get install oracle-java10-set-default
-
-
-#      args:
-#        chdir: /home/ubuntu/spring-boot-app/
 
 
