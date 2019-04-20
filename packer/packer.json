@@ -21,10 +21,6 @@
       "type": "file",
       "source": "packer/bin/",
       "destination": "/home/ubuntu/spring-boot-app"
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "packer/ansible-playbook.yml"
     }
   ],
 
