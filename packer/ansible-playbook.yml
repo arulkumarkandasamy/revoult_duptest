@@ -11,6 +11,10 @@
       sudo: yes
       when: ansible_distribution_release == "precise"
 
+    - name: add keyserver
+      sudo: yes
+      shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+
     - name: add webupd8 ppa
       apt_repository: repo='ppa:webupd8team/java'
 
