@@ -11,7 +11,8 @@ pipeline {
 
     stage('install') {
       steps {
-          sh 'mkdir /root/packer'
+          sh 'apt-get update'
+          sh 'sudo mkdir /root/packer'
           dir("/root/packer") {
             sh '''
                 wget https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_linux_amd64.zip
