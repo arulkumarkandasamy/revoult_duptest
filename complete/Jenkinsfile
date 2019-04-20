@@ -1,7 +1,7 @@
 pipeline {
   agent {
        docker {
-          image 'maven:3.3.3'
+          image 'node:8.9.4'
           args '-u root:sudo -v $HOME/workspace/revoultduptest:/revoultduptest'
         }
     }
