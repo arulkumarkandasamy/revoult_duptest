@@ -1,5 +1,9 @@
 pipeline {
-  agent { label 'java8'  }
+  agent {
+       docker {
+          image 'maven:3.3.3'
+        }
+    }
   environment {
         EMAIL_RECIPIENTS = 'arulkr1967@gmail.com'
   }
