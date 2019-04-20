@@ -15,9 +15,9 @@ pipeline {
         dir("${JENKINS_HOME}/workspace/revoultduptest/") {
           sh 'mvn package'
         }
-        withAWS(credentials: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', region: 'ap-south-1') {
-            s3Upload bucket:'arulrevoulttest', path:"build-${env.BUILD_NUMBER}/", includePathPattern: "*tar*", workingDir:"${env.WORKSPACE}"
-        }
+        withAWS(endpointUrl:'https://s3.amazonaws.com', credentials:'ada90a34-30ef-47fb-8a7f-a97fe69ff93f'){
+			s3Upload(bucket:'arulrevoulttest', path:'', includePathPattern: '*.tar', workingDir: 'revoultduptest/target/', acl:'PublicRead')
+		}
       }
     }
     stage('Create Packer AMI') {
