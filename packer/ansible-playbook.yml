@@ -1,35 +1,8 @@
 ---
   - hosts: all
 
-    tasks:
-    - name: add add-apt-repostory
-      apt: pkg=software-properties-common state=present update_cache=yes
-      sudo: yes
-
-    - name: add add-apt-repostory
-      apt: pkg=python-software-properties state=present update_cache=yes
-      sudo: yes
-      when: ansible_distribution_release == "precise"
-
-    - name: add keyserver
-      sudo: yes
-      shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
-
-    - name: add webupd8 ppa
-      sudo: yes
-      apt_repository: repo='ppa:webupd8team/java'
-
-    - name: update
-      shell: apt-get update
-      sudo: yes
-
-    - name: auto accept oracle jdk license
-      shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-      sudo: yes
-
-    - name: install java8
-      shell: apt-get install -y oracle-java8-installer ca-certificates
-      sudo: yes
+    roles:
+    - role: ansible-role-java
 
 #    - name: start spring boot jar
 #      command: nohup java -jar gs-spring-boot-0.1.0.jar &
