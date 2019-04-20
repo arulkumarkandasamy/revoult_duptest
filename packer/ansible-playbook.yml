@@ -16,6 +16,7 @@
       shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
     - name: add webupd8 ppa
+      sudo: yes
       apt_repository: repo='ppa:webupd8team/java'
 
     - name: update
