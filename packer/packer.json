@@ -14,7 +14,9 @@
             "/usr/bin/apt-get update",
             "/usr/bin/apt-get -y install ansible",
             "mkdir /home/ubuntu/spring-boot-app",
-            "chown ubuntu:ubuntu /home/ubuntu/spring-boot-app"
+            "chown ubuntu:ubuntu /home/ubuntu/spring-boot-app",
+            "mkdir /home/ubuntu/.ansible/roles",
+            "chown ubuntu:ubuntu /home/ubuntu/.ansible/roles"
         ]
     },
     {
