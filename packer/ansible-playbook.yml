@@ -2,7 +2,7 @@
   - hosts: all
     sudo: yes
     roles:
-    - role: ansible-role-java
+    - role: oracle-java
 
 #    - name: start spring boot jar
 #      command: nohup java -jar gs-spring-boot-0.1.0.jar &
