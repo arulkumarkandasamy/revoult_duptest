@@ -3,11 +3,8 @@
 
   tasks:
 
-    - name: example copying file with owner and permissions
-      copy:
-        src: /packer/bin/gs-spring-boot-0.1.0.jar
-        dest: /home/ubuntu/node-app/
-        owner: ubuntu
-        group: ubuntu
-        mode: 0777
+    - name: start spring boot jar
+      command: nohup java -jar gs-spring-boot-0.1.0.jar &
+      args:
+        chdir: /home/ubuntu/spring-boot-app/
 
