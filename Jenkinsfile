@@ -18,7 +18,7 @@ pipeline {
         withCredentials([
             usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
           ]) {
-            sh 's3Upload(file:'gs-spring-boot-0.1.0.jar', bucket:'arulrevoulttest', path:'${JOB_NAME}-${BUILD_NUMBER}/target/gs-spring-boot-0.1.0.jar')'
+            sh "s3Upload(file:'gs-spring-boot-0.1.0.jar', bucket:'arulrevoulttest', path:'${JOB_NAME}-${BUILD_NUMBER}/target/gs-spring-boot-0.1.0.jar')"
         }
 
       }
