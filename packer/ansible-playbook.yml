@@ -3,12 +3,12 @@
     sudo: yes
     tasks:
     - name: install ppa
-      shell: add-apt-repository ppa:linuxuprising/java
+      shell: add-apt-repository ppa:openjdk-r/ppa
 
-    - name: install installer
-      shell: apt-get install oracle-java10-installer
+    - name: apt update
+      shell: apt-get update
 
-    - name: set default
-      shell: apt-get install oracle-java10-set-default
+    - name: install open jdk
+      shell: apt-get install openjdk-8-jdk
 
 
