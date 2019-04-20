@@ -11,7 +11,7 @@ pipeline {
 
     stage('install') {
       steps {
-          sh 'apt-get update'
+          sh 'sudo apt-get update'
           sh 'sudo mkdir /root/packer'
           dir("/root/packer") {
             sh '''
