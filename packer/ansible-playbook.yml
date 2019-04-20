@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  tasks:
+
+    - name: start spring boot jar
+      command: nohup java -jar target/gs-spring-boot-0.1.0.jar &
+      args:
+        chdir: /home/ubuntu/spring-boot-app/
+
