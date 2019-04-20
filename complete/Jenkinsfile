@@ -1,14 +1,9 @@
 pipeline {
-  agent { 
-      docker {
-          image 'openjdk:8-jdk-alpine'
-    }
-  }
+  agent { label 'java8'  }
   environment {
-        HOME = '.'
+        EMAIL_RECIPIENTS = 'arulkr1967@gmail.com'
   }
   stages {
-
     stage('Build') {
       steps {
         sh 'mvn package'
