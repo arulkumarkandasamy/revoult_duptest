@@ -16,7 +16,7 @@ pipeline {
           sh 'mvn package'
         }
         withAWS(endpointUrl:'https://s3.amazonaws.com', credentials:'ada90a34-30ef-47fb-8a7f-a97fe69ff93f'){
-			s3Upload(bucket:'arulrevoulttest', path:'', includePathPattern: '*.tar', workingDir: 'revoultduptest/target/', acl:'PublicRead')
+			s3Upload(file:'gs-spring-boot-0.1.0.jar', bucket:'arulrevoulttest', path:'revoultduptest/target/gs-spring-boot-0.1.0')
 		}
       }
     }
