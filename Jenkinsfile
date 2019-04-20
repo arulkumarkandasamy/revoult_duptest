@@ -16,7 +16,7 @@ pipeline {
           sh 'mvn package'
         }
         withAWS(credentials: 'dash-build-s3upload', region: 'us-west-1') {
-            s3Upload bucket: 'arulrevoulttest', includePathPattern: "*tar*", workingDir: 'build'
+            s3Upload(bucket: 'arulrevoulttest', includePathPattern: "*tar*", workingDir: 'build')
         }
       }
     }
