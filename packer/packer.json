@@ -15,14 +15,14 @@
             "/usr/bin/apt-get -y install ansible",
             "mkdir /home/ubuntu/spring-boot-app",
             "chown ubuntu:ubuntu /home/ubuntu/spring-boot-app",
-            "mkdir /home/ubuntu/.ansible/roles",
-            "chown ubuntu:ubuntu /home/ubuntu/.ansible/roles"
+            "mkdir /usr/share/ansible/roles",
+            "chown ubuntu:ubuntu /usr/share/ansible/roles"
         ]
     },
     {
       "type": "file",
       "source": "packer/roles/",
-      "destination": "/home/ubuntu/.ansible/roles"
+      "destination": "/usr/share/ansible/roles"
     },
     {
       "type": "ansible-local",
