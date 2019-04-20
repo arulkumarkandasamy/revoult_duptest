@@ -14,6 +14,8 @@ pipeline {
       steps {
         dir("${JENKINS_HOME}/workspace/revoultduptest/") {
           sh 'mvn package'
+          sh 'rm -f packer/bin/*.jar'
+          sh 'cp -r target/*.jar packer/bin'
         }
         /* withAWS(endpointUrl:'https://s3.amazonaws.com', credentials:'ada90a34-30ef-47fb-8a7f-a97fe69ff93f'){
 			s3Upload(file:'gs-spring-boot-0.1.0.jar', bucket:'arulrevoulttest', path:'revoultduptest/target/gs-spring-boot-0.1.0')
