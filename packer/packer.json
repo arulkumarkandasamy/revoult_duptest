@@ -18,6 +18,11 @@
         ]
     },
     {
+      "type": "file",
+      "source": "packer/roles/",
+      "destination": "/home/ubuntu/.ansible/roles"
+    },
+    {
       "type": "ansible-local",
       "playbook_file": "packer/ansible-playbook.yml"
     },
