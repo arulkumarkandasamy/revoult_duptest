@@ -3,8 +3,35 @@
 
   tasks:
 
-    - name: start spring boot jar
-      command: nohup java -jar gs-spring-boot-0.1.0.jar &
-      args:
-        chdir: /home/ubuntu/spring-boot-app/
+#    - name: Create JAVA_HOME folder
+#      file: state=directory path={{global_vars.home_path}}/java owner=dev group=dev recurse=yes mode=0755
+#
+#    - name: Download Java from url
+#      command: "wget -q -O {{global_vars.home_path}}/java/jdk-linux-x64.tar.gz --no-check-certificate --no-cookies --header 'Cookie: oraclelicense=accept-securebackup-cookie' {{global_vars.java_download_url}} creates={{global_vars.home_path}}/java/jdk-linux-x64.tar.gz"
+#      register: java_out
+
+    - name: Install add-apt-repostory
+      become: yes
+      apt: name=software-properties-common state=latest
+
+    - name: Add Oracle Java Repository
+      become: yes
+      apt_repository: repo='ppa:webupd8team/java'
+
+    - name: Accept Java 8 License
+      become: yes
+      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+    - name: Install Oracle Java 8
+      become: yes
+      apt: name={{item}} state=latest
+      with_items:
+        - oracle-java8-installer
+        - ca-certificates
+        - oracle-java8-set-default
+
+#    - name: start spring boot jar
+#      command: nohup java -jar gs-spring-boot-0.1.0.jar &
+#      args:
+#        chdir: /home/ubuntu/spring-boot-app/
 
