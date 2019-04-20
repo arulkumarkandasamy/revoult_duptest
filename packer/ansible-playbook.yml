@@ -1,11 +1,18 @@
 ---
   - hosts: all
     sudo: yes
-    roles:
-    - role: oracle-java
 
-#    - name: start spring boot jar
-#      command: nohup java -jar gs-spring-boot-0.1.0.jar &
+    - name: install ppa
+      shell: add-apt-repository ppa:linuxuprising/java
+
+    - name: install installer
+      shell: apt-get install oracle-java10-installer
+
+    - name: set default
+      shell: apt-get install oracle-java10-set-default
+
+
 #      args:
 #        chdir: /home/ubuntu/spring-boot-app/
+
 
