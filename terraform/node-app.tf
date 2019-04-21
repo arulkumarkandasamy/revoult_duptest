@@ -6,14 +6,14 @@ provider "aws" {
   profile   = "jayarul"
 }
 
-terraform {
-  backend "s3" {
-    bucket = "arulrevoulttest"
-    key = "arulrevoulttest.tfstate"
-    region = "eu-west-1"
-    profile   = "jayarul"
-  }
-}
+//terraform {
+//  backend "s3" {
+//    bucket = "arulrevoulttest"
+//    key = "arulrevoulttest.tfstate"
+//    region = "eu-west-1"
+//    profile   = "jayarul"
+//  }
+//}
 
 data "aws_ami" "node_app_ami" {
   most_recent = true
