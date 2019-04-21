@@ -33,10 +33,6 @@ pipeline {
     }
     stage('AWS Deployment') {
       steps {
-          /* withAWS(region:'eu-west-1',credentials:'ada90a34-30ef-47fb-8a7f-a97fe69ff93f')\
-                {
-                    s3Download(file: '${JENKINS_HOME}/workspace/revoultduptest/terraform', bucket: 'arulrevoulttest', path: 'arulrevoulttest.tfstate', force:true)
-                } */
           withCredentials([
             usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),
             usernamePassword(credentialsId: '2facaea2-613b-4f34-9fb7-1dc2daf25c45', passwordVariable: 'REPO_PASS', usernameVariable: 'REPO_USER'),
@@ -45,10 +41,6 @@ pipeline {
                cd terraform
                terraform init
                terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
-
-               /* git add terraform.tfstate
-               git -c user.name="Arulkumar Kandasamy" -c user.email="karul43@yahoo.co.in" commit -m "terraform state update from Jenkins"
-               git push https://${REPO_USER}:${REPO_PASS}@github.com/arulkumarkandasamy/revtest_practice1.git master */
             '''
         }
       }
