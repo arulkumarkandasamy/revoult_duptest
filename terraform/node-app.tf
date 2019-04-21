@@ -2,9 +2,8 @@ variable "access_key" {}
 variable "secret_key" {}
 
 provider "aws" {
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
   region     = "eu-west-1"
+  profile   = "jayarul"
 }
 
 terraform {
@@ -12,6 +11,7 @@ terraform {
     bucket = "arulrevoulttest"
     key = "arulrevoulttest.tfstate"
     region = "eu-west-1"
+    profile   = "jayarul"
   }
 }
 
