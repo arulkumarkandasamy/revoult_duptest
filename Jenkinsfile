@@ -35,7 +35,7 @@ pipeline {
       steps {
           withAWS(region:'eu-west-1',credentials:'ada90a34-30ef-47fb-8a7f-a97fe69ff93f')\
                 {
-                    s3Download(file: 'arulrevoulttest.tfstate/terraform.tfstate', bucket: 'arulrevoulttest', path: '${JENKINS_HOME}/workspace/revoultduptest/terraform', force:true)
+                    s3Download(file: '${JENKINS_HOME}/workspace/revoultduptest/terraform', bucket: 'arulrevoulttest', path: 'arulrevoulttest.tfstate', force:true)
                 }
           withCredentials([
             usernamePassword(credentialsId: 'ada90a34-30ef-47fb-8a7f-a97fe69ff93f', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),
